@@ -1,3 +1,6 @@
+# This creates a 'gh-pages' branch and deploys to
+# https://clamity-toolbox.github.io/clamity-guide/
+
 name: ci
 on:
   push:

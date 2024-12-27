@@ -2,6 +2,9 @@
 
 Clamity User's Guide
 
+The deployed User's Guide hosted on Github Pages is
+[here](https://clamity-toolbox.github.io/clamity-guide/).
+
 ## Sandbox Setup
 
 1. Make sure you have python version 3 in your search path.
@@ -29,8 +32,11 @@ Clamity User's Guide
 
 1. Go to http://localhost:8000/ in your browser.
 
-1. To leave your python activated shell, type `deactivate`. To restart the
-   server, run:
+1. To leave your python activated shell, run:
+   ```
+   deactivate
+   ```
+   To restart the server, run:
    ```
    source venv/bin/activate
    mkdocs serve
@@ -41,3 +47,8 @@ Clamity User's Guide
 ### Early Setup
 
 1. mkdocs new .
+
+### References
+
+- [Tutorial - YT](https://www.youtube.com/watch?v=Q-YA_dA8C20&t=740s)
+- [Another tutorial - YT](https://www.youtube.com/watch?v=xlABhbnNrfI&t=45s)
