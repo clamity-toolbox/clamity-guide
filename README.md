@@ -13,8 +13,9 @@ The deployed User's Guide hosted on Github Pages is
    python3 --version
    ```
 
-1. Insetall and setup your sandbox. This will leave you in an activated python
-   shell for your newly created python virtual environment.
+1. Install and setup your sandbox. This will leave you in an activated python
+   shell for your newly created python virtual environment. Change to your
+   source directory and cut & paste the following commands:
 
    ```
    git clone git@github.com:clamity-toolbox/clamity-guide
@@ -22,9 +23,11 @@ The deployed User's Guide hosted on Github Pages is
    python3 -m venv venv
    source venv/bin/activate
    pip install mkdocs-material
+   mkdocs build
    ```
 
-1. Start a local server
+1. Start a local server. The server will watch your repo and update it
+   dynmically as you edit.
 
    ```
    mkdocs serve
