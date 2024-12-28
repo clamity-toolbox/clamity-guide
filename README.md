@@ -15,7 +15,7 @@ The deployed User's Guide hosted on Github Pages is
 
 1. Install and setup your sandbox. This will leave you in an activated python
    shell for your newly created python virtual environment. Change to your
-   source directory and cut & paste the following commands:
+   preferred source directory and cut & paste the following commands:
 
    ```
    git clone git@github.com:clamity-toolbox/clamity-guide
@@ -24,26 +24,31 @@ The deployed User's Guide hosted on Github Pages is
    source venv/bin/activate
    pip install mkdocs-material
    mkdocs build
-   ```
-
-1. Start a local server. The server will watch your repo and update it
-   dynmically as you edit.
-
-   ```
    mkdocs serve
    ```
 
 1. Go to http://localhost:8000/ in your browser.
 
-1. To leave your python activated shell, run:
+1. When you exit `mkdocs serve` (break), and want to to leave your python
+   activated shell, run:
+
    ```
    deactivate
    ```
-   To restart the server, run:
+
+1. To restart the server from a non-activated shell, run:
    ```
    source venv/bin/activate
    mkdocs serve
    ```
+
+## CI/CD
+
+This [CI Github Actions workflow](.github/workflows/ci.yml) invoked on changes
+to the `main` branch runs the **mkdocs** command to generate the static site,
+committing it to the `gh_pages` branch. Github Pages, in turn, is configured to
+deploy that branch to https://user-guide.clamity.com. It usually takes anywhere
+from a few to 5 minutes for changes to post.
 
 ## Notes
 
