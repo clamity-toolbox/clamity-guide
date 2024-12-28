@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+rootDir="$(dirname $0)/.."
+cd "$rootDir/docs/man pages" || exit 1
+
+function man_page {
+    local cmd="$1"
+    echo "generating $cmd.md..."
+    # echo " # clamity $cmd help" >"$cmd.md"
+    local page=$cmd
+    if [ "$cmd" == index ]; then
+        echo "
+# Command Help
+
+The man page for each sub-command (action) is the best starting place to learn about that
+command.
+" >index.md
+        cmd=""
+        echo -e "\`\`\`\n% clamity\n$($CLAMITY_ROOT/bin/run-clamity)\n\`\`\`" >>"index.md" || return 1
+    else
+        [ "$cmd" == clamity ] && cmd=""
+        >$page.md
+        echo -e "\`\`\`\n% clamity $cmd help\n$($CLAMITY_ROOT/bin/run-clamity $cmd help)\n\`\`\`" >>"$page.md" || return 1
+    fi
+}
+
+[ -z "$CLAMITY_ROOT" ] && echo "clamity must be loaded for this command to work" && exit 1
+for cmd in $($CLAMITY_ROOT/bin/run-clamity | awk '{print $1}' | grep -v ^$ | sort -u | egrep -vie '^(usage|help|clamity)$'); do
+    man_page $cmd || exit 1
+done
+man_page clamity || exit 1
+man_page index || exit 1
+exit 0
