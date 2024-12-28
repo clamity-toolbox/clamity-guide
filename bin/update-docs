@@ -16,15 +16,19 @@ The man page for each sub-command is the best starting place to learn about that
 command. They're all presented in this section.
 " >index.md
         cmd=""
-        echo -e "\`\`\`\n% clamity\n$($CLAMITY_ROOT/bin/run-clamity)\n\`\`\`" >>"index.md" || return 1
+        echo -e "\`\`\`\n% clamity\n$(run-clamity)\n\`\`\`" >>"index.md" || return 1
     else
         [ "$cmd" == clamity ] && cmd=""
         >$page.md
-        echo -e "\`\`\`\n% clamity $cmd help\n$($CLAMITY_ROOT/bin/run-clamity $cmd help)\n\`\`\`" >>"$page.md" || return 1
+
+        echo -e "\`\`\`\n% clamity $cmd help\n$(run-clamity $cmd help)\n\`\`\`" >>"$page.md" || return 1
     fi
 }
 
 [ -z "$CLAMITY_ROOT" ] && echo "clamity must be loaded for this command to work" && exit 1
+[ -n "$CLAMITY_verbose" ] && unset CLAMITY_verbose
+[ -n "$CLAMITY_debug" ] && unset CLAMITY_debug
+
 for cmd in $($CLAMITY_ROOT/bin/run-clamity | awk '{print $1}' | grep -v ^$ | sort -u | egrep -vie '^(usage|help|clamity)$'); do
     man_page $cmd || exit 1
 done

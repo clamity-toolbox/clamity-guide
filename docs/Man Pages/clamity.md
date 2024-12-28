@@ -21,7 +21,7 @@ ABSTRACT
 	Local settings and data are stored in $CLAMITY_HOME (defaults to
 	$HOME/.clamity).
 
-	The clamity guides can be found at https://clamity.com/guides/ .
+	The clamity user guide can be found at https://user-guide.clamity.com/
 
 CLAMITY COMMANDS
 
@@ -85,13 +85,13 @@ ENVIRONMENT VARIABLES
 	These are set when clamity is loaded. You can pre-define CLAMITY_HOME
 	if you don't want it to be '$HOME/.clamity'.
 
-	CLAMITY_ROOT
-		clamity installtion directory. This is set when clamity is loaded.
+	CLAMITY_ROOT (read-only)
+		clamity software directory. This is set when clamity is loaded.
 
 	CLAMITY_HOME
 		clamity home dir holds logs, customizations, python virtual env,
 		and much more. It is created when clamity is loaded for the first
-		time. Unless this variable is set, it will be ~/.clamity/.
+		time. Unless this variable is set, it will be ~/.clamity.
 
 	CLAMITY_<lower-case-option-name>
 		Clamity options are managed using 'clamity config'. Options are
