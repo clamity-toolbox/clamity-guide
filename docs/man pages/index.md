@@ -1,8 +1,8 @@
 
-# Command Help
+# Clamity Commands
 
 The man page for each sub-command (action) is the best starting place to learn about that
-command.
+command. They're all presented in this section.
 
 ```
 % clamity

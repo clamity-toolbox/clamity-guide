@@ -3,7 +3,7 @@
 Clamity User's Guide
 
 The deployed User's Guide hosted on Github Pages is
-[here](https://clamity-toolbox.github.io/clamity-guide/).
+[here](https://clamity-guide.clamity.com/).
 
 ## Sandbox Setup
 

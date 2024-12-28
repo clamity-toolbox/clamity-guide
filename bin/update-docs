@@ -10,10 +10,10 @@ function man_page {
     local page=$cmd
     if [ "$cmd" == index ]; then
         echo "
-# Command Help
+# Clamity Commands
 
 The man page for each sub-command (action) is the best starting place to learn about that
-command.
+command. They're all presented in this section.
 " >index.md
         cmd=""
         echo -e "\`\`\`\n% clamity\n$($CLAMITY_ROOT/bin/run-clamity)\n\`\`\`" >>"index.md" || return 1

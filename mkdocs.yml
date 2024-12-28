@@ -55,4 +55,4 @@ markdown_extensions:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 copyright: |
-  &copy; 2024-2025 <a href="https://github.com/jimmyjayp"  target="_blank" rel="noopener">James Price</a> - <a href="https://www.mkdocs.org" target="_blank" rel="noopener">This guide was created with <strong>mkdocs</strong>.</a>
+  &copy; 2024-2025 <a href="https://github.com/jimmyjayp"  target="_blank" rel="noopener">James Price</a>
