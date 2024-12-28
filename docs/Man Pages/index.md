@@ -1,7 +1,7 @@
 
 # Clamity Commands
 
-The man page for each sub-command (action) is the best starting place to learn about that
+The man page for each sub-command is the best starting place to learn about that
 command. They're all presented in this section.
 
 ```
@@ -11,7 +11,7 @@ USAGE
 	clamity help
 	clamity { command [sub-command] [options] [[--] positional args]
 
-CLAMITY ACTIONS
+CLAMITY COMMANDS
 
 	aws - provides exteneded capabilities to the aws command line utility
 	config - manage clamity configuration settings

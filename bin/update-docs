@@ -12,7 +12,7 @@ function man_page {
         echo "
 # Clamity Commands
 
-The man page for each sub-command (action) is the best starting place to learn about that
+The man page for each sub-command is the best starting place to learn about that
 command. They're all presented in this section.
 " >index.md
         cmd=""
