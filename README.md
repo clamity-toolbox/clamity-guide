@@ -42,6 +42,15 @@ The deployed User's Guide hosted on Github Pages is
    mkdocs serve
    ```
 
+## Generated Documentation
+
+Some of the documentation, the command man pages for instance, are generated.
+From the root of the repo, run:
+
+```
+./bin/update-docs
+```
+
 ## CI/CD
 
 This [CI Github Actions workflow](.github/workflows/ci.yml) invoked on changes
