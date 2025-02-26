@@ -4,7 +4,7 @@ USAGE
 
 	clamity tfm { vars | smart-import | record-results } [-reconfigure] [tfm-options]
 	clamity tfm apply [--no-commit] [tfm-options]
-	clamity tfm common { report | update | new-root <state-group> <module-name> }
+	clamity tfm common { report | update [mine] | new-root <state-group> <module-name> }
 	clamity tfm settings { show | [un]set aws-profile [profile] }
 	clamity tfm cicd complete [-reconfigure]
 	clamity tfm { terraform-cmd-and-args }
@@ -18,9 +18,9 @@ ABSTRACT
 	Use the 'clamity tfm' command as if it were an alias for the 'terraform'
 	command. It intercepts custom sub-commands (extensions), passing the rest
 	through to 'terraform' directly so 'clamity tfm state list' is identical
-	to 'terraform state list'. Some terraform sub-commands are intercepted and
+	to 'terraform state list'. Some terraform commands are intercepted and
 	the command line passed to 'terraform' modified to accomodate global settings
-	for things like state management. For example, 'tfm init' will add the
+	for things like state management. For example, 'clamity tfm init' will add the
 	'-backend-config=xxx' arg for the appropriate config before passing through
 	to 'terraform init'.
 
@@ -67,9 +67,9 @@ SUB-COMMANDS
 		Saves state listing to STATE.md and output to OUTPUT.json.
 
 	settings
-		You can set an aws_profile locally which will be used when running
-		terraform commands. This is if you don't want to manage it with
-		the AWS_PROFILE env variable.
+		You can set an aws_profile by state_group to use locally which when running
+		terraform commands. This is if you don't want to manage it with the
+		AWS_PROFILE env variable.
 
 	smart-import
 		System for reading resource data and importing it into state. This requires
@@ -129,29 +129,32 @@ SUPPORTED SHELLS
 	bash, zsh
 
 FILES
+    TFM_REPO_ROOT/.clamity/config/settings.sh
+		Configuration settings for the repo. This file should be committed.
 
-	TFM_REPO_ROOT/.tfm.local.sh
-		Local variable declarations (not to be committed) sourced in when
-		running all 'tfm' commands. This is git ignored.
+    TFM_REPO_ROOT/.clamity/config/module-sequence.sh
+		Script to provides the sequence in which root modules should be applied
+		allowing for intra-module dependencies. This should be executed from
+		within TFM_REPO_ROOT. This file should be committed.
 
-	./.tfm.sh
-		Root-specific variable declarations. To be committed.
+    TFM_REPO_ROOT/.clamity/config/state-resource-prefix.sh
+		Provides the resource prefix and region required for identifying backend
+		state resources when creating new root modules. This should be executed
+		from within TFM_REPO_ROOT. This file should be committed.
 
-	TFM_REPO_ROOT/TFM_ROOT_MODS/<top-dir>/.tfm.sh
-		<top-dir> (eg. dev or prod)-specific variables such as account,
-		user list, etc.. used to support imports and other conveniences.
-		This file needs to be kept in sync with the values in the
-		<top-dir>/common/common-variables.tf file.
-		Optional. Should be committed.
+	TFM_REPO_ROOT/.clamity/local/settings.sh
+		Configuration settings for the repo which should _not_ be committed.
+		Examples include your desired AWS_PROFILE values by state group.
 
 ENVIRONMENT VARIABLES
 	
 	TFM_REPO_ROOT
 		Full path to and including this repo's root.
 
-	TFM_ROOT_MODS
-		Relative path from TFM_REPO_ROOT to the top of the root module
-		tree (default = 'roots').
+	TFM_POST_COMMIT
+		Controls execution of post-apply commit and push. Valid values are
+		'commit-only' (won't push), 'none' (won't commit or push), or null
+		(default) which will commit and push.
 
 EXAMPLES
 	

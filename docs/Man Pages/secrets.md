@@ -3,7 +3,7 @@
 /Users/jj/.clamity/pyvenv/bin/python3 /Users/jj/src/clamity-toolbox/clamity/cmds/secrets.py help
 usage: 
     clamity secrets { list | help }
-    clamity secrets add --name secret/path/and/name --desc "useful desc" --value "supersecret"
+    clamity secrets write --name secret/path/and/name --desc "useful desc" --value "supersecret"
     clamity secrets { read | details | delete } --name secret/path/and/name
     clamity secrets update --name secret/path/and/name [--desc "updated desc"] [--value "newsecret"]
 
@@ -16,7 +16,7 @@ synopsis:
     pipelines.
 
 positional arguments:
-  {list,delete,update,add,read,details,help}
+  {list,delete,update,write,read,details,help}
                         action to take
 
 options:
@@ -28,6 +28,8 @@ options:
   -y, --yes             disable interactive prompts in the affirmative
   -of {json,text,csv}, --output-format {json,text,csv}
                         json, text (default) or csv
+  --no-truncate         don't truncate column widths
+  --no-header           don't display column headers
   --aws-region AWS_REGION
                         AWS region (eg. us-east-1)
   --desc DESC           useful description of the secret (possibly a URL)
@@ -36,13 +38,13 @@ options:
 
 actions:
 
-    add      Add new secrets to the secrets store
     delete   Delete secrets from the secrets store
     details  Display the AWS API response (in JSON) for secret details
     help     Full help
     list     List the secrets
     read     Return the value of a secret
     update   Update a secret's description or value
+    write    Add new secrets to the secrets store
 
 standard storage conventions:
 

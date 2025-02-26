@@ -10,10 +10,21 @@ ABSTRACT
 	Update the clamity software, package managers and packages and all
 	matter of software under clamity's umbrella.
 
+	The full monty includes:
+	 - backup clamity data and software (/Users/jj/src/clamity-toolbox/clamity/, ~/.clamity/)
+	 - update clamity software (git pull)
+	 - update clamity python env
+	 - update selected package manager (apt, brew, macports, ...) pkgs
+
 SELFUPDATE COMMANDS
 
 	update - update clamity software (default action)
 
+COMMAND OPTIONS
+	
+# 	--no-pkg-mgr
+# 		Update the clamity installation without including the package manager.
+# 
 COMMON OPTIONS
 
 	-d, --debug
@@ -53,6 +64,9 @@ SUPPORTED SHELLS
 
 EXAMPLES
 	
-	Update clamity
+	Update clamity interactively
 		clamity selfupdate
+
+	Update clamity non-interactively without the including the package manager
+		clamity selfupdate --no-pkg-mgr
 ```
