@@ -3,17 +3,22 @@
 USAGE
 
 	clamity context { help | show }
+	clamity context data-pack { installed | set [<data-pack>] | clear | install-git <data-pack-url-via-git> | remove <data-pack> | update | fetch [prop] }
 
 ABSTRACT
 	
-    Many clamity functions operate in a given context. That context
-    is often specific to the task at hand. For example, if you're
-    working with AWS resources the AWS SDK access credentials and region
-    may determine part of the context. Use this sub-command to report
-    and amnipulate the various contexts clamity is aware of.
+	Many clamity functions operate in a given context. For example, if you're
+	working with AWS resources the AWS SDK access credentials and region will
+	determine the endpoint and role applied to the task at hand. Clamity is
+	aware of some context types and can let you switch between them.
+
+	Known context types:
+	- AWS
+	- Git based data packs
 
 CONTEXT COMMANDS
 
+	data-pack - manage data packs
 	show - report contexts
 
 COMMON OPTIONS
@@ -51,5 +56,7 @@ COMMON OPTIONS
 
 EXAMPLES
 	
-	Examples are needed
+	Install some data packs.
+		clamity context data-pack install-git git@github.com:teamvortexsoftware/infra-data-dev
+		clamity context data-pack install-git git@github.com:teamvortexsoftware/infra-data-prod
 ```

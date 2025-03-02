@@ -7,6 +7,7 @@ USAGE
 	clamity tfm common { report | update [mine] | new-root <state-group> <module-name> }
 	clamity tfm settings { show | [un]set aws-profile [profile] }
 	clamity tfm cicd complete [-reconfigure]
+	clamity tfm debug [ on | off ]  # (un)sets the 'TF_VAR_debug' env var
 	clamity tfm { terraform-cmd-and-args }
 
 ABSTRACT

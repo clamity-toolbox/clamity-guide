@@ -3,18 +3,13 @@
 USAGE
 
 	clamity selfupdate help
-	clamity selfupdate [update] [ -y ] [ --no-pkg-mgr ]
+	clamity selfupdate [-y] [update] [--no-pkg-mgr]
+	clamity selfupdate [-y] cron { installed | available | install <cron-template> | remove <cron-template> }
 
 ABSTRACT
 	
 	Update the clamity software, package managers and packages and all
 	matter of software under clamity's umbrella.
-
-	The full monty includes:
-	 - backup clamity data and software (/Users/jj/src/clamity-toolbox/clamity/, ~/.clamity/)
-	 - update clamity software (git pull)
-	 - update clamity python env
-	 - update selected package manager (apt, brew, macports, ...) pkgs
 
 SELFUPDATE COMMANDS
 
@@ -22,9 +17,28 @@ SELFUPDATE COMMANDS
 
 COMMAND OPTIONS
 	
-# 	--no-pkg-mgr
-# 		Update the clamity installation without including the package manager.
-# 
+	--no-pkg-mgr
+		Update the clamity installation without including the package manager.
+
+DESCRIPTION
+
+	update (default action)
+		Runs the self update function. The full monty includes:
+		  - backup clamity data and software ($CLAMITY_ROOT and $CLAMITY_HOME)
+		  - update clamity software (git pull)
+		  - update clamity python virtual environment (clam-py update)
+		  - update selected package manager (apt, brew, macports, ...) pkgs
+
+	cron
+		Manage a simple crontab entry to keep clamity updated. 'installled' lists
+		clamity additions currently in your crontab. 'available' lists the
+		templates included with clamity which can be installed.
+
+FILES
+
+	Logfiles created by crontab jobs.
+		$CLAMITY_HOME/logs/*.cron.*
+
 COMMON OPTIONS
 
 	-d, --debug
@@ -68,5 +82,5 @@ EXAMPLES
 		clamity selfupdate
 
 	Update clamity non-interactively without the including the package manager
-		clamity selfupdate --no-pkg-mgr
+		clamity selfupdate -y --no-pkg-mgr
 ```
