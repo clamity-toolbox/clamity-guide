@@ -21,7 +21,7 @@ A browser front-ended service is in the planning stage.
 - The toolbox favors unix-like operating systems, notably linux and OSX.
 
 - The Clamity CLI supports **zsh** and **bash**. [Read this brief about working
-  in a shell environment]('topics/shell-usage/').
+  in a shell environment](topics/shell-usage/).
 
 - Make sure you have a Clamity supported package manager installed on your
   computer and in your search path (`PATH`). Clamity builds on lots of 3rd party
