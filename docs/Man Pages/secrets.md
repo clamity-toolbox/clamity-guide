@@ -4,8 +4,10 @@
 usage: 
     clamity secrets { list | help }
     clamity secrets write --name secret/path/and/name --desc "useful desc" --value "supersecret"
+    clamity secrets write --name secret/path/and/name --desc "useful desc" \
+                          --type <known-type> --value '{"prop1": "val", "prop2": "val2", ...}'
     clamity secrets { read | details | delete } --name secret/path/and/name
-    clamity secrets update --name secret/path/and/name [--desc "updated desc"] [--value "newsecret"]
+    clamity secrets update --name secret/path/and/name [--desc "updated desc"] [[--type <known-type>] --value "secret-data"]
 
 Manage data in the secrets store (AWS secretsmanager)
 
@@ -16,7 +18,7 @@ synopsis:
     pipelines.
 
 positional arguments:
-  {list,delete,update,write,read,details,help}
+  {list,types,delete,update,write,read,details,restore,help}
                         action to take
 
 options:
@@ -33,8 +35,10 @@ options:
   --aws-region AWS_REGION
                         AWS region (eg. us-east-1)
   --desc DESC           useful description of the secret (possibly a URL)
-  --value VALUE         the secret's value
   --name NAME           secret's path and name (secret store key)
+  --value VALUE         the secret's value
+  --type {ssh_key,rds_mysql}
+                        add secret validation
 
 actions:
 
