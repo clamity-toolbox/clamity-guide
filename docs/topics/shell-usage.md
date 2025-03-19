@@ -68,33 +68,31 @@ Here's how I handle shell setup on my mac:
 % cat ~/.zprofile
 export HISTCONTROL=ignorespace
 export SOME_TOKEN_I_WANT_SET_IN_ALL_SHELLS="token-value-goes-here"
-%
 
 
 % cat ~/.zshrc
-# git
-alias git-log="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-alias git-log-all='git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"'
-alias git-log-brief='git log --pretty=format:"%h%x09%an%x09%ad%x09%s"'
-
-# VS Code
-alias code='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'
-
-# load various tool kits
+# Load Toolkits
+function __add_to_path { echo "$PATH" | grep -q "$1" || export PATH="$PATH:$1"; }
+# load clamity
 alias load-clamity='source $HOME/src/clamity-toolbox/clamity/loader.sh'
+# use macports packages (priority)
 alias load-macports='echo "$PATH" | grep -q /opt/local/bin || export PATH="/opt/local/bin:/opt/local/sbin:$PATH"'
-alias load-brew='eval "$(/opt/homebrew/bin/brew shellenv)"'
-alias load-nvm='source /opt/local/share/nvm/init-nvm.sh'
-alias load-dev-1='load-macports; load-nvm; load-clamity --quiet'
-alias load-dev-2='load-brew; load-nvm; load-clamity --quiet'
+# use homebrew packages. Also the postgres and mysql command line utilities
+alias load-homebrew='eval "$(/opt/homebrew/bin/brew shellenv)"; __add_to_path /opt/homebrew/opt/libpq/bin; __add_to_path /opt/homebrew/opt/mysql-client/bin'
+# NVM node version manager
+alias load-nvm='source /opt/local/share/nvm/init-nvm.sh; __add_to_path ./node_modules/.bin'
 
-# misc development & quickies
-alias pyhttpd='python -m SimpleHTTPServer'
+# Setup Development Environments
+# use macports packages. Also inclues nvm and clamity.
+alias load-dev-port='load-macports; load-nvm; load-clamity --quiet'
+# use homebrew packages. Also inclues nvm and clamity.
+alias load-dev-brew='load-homebrew; load-nvm; load-clamity --quiet'
+# Use homebrew packages first, then macports packages. Also inclues nvm and clamity.
+alias load-dev-1='load-homebrew; load-macports; load-nvm; load-clamity --quiet'
 
-# Uncomment _only one_ of these if you want that environment for all shells.
+# Uncomment _only one_ of these if you want that environment in place for all shells.
 # load-dev-1
-# load-dev-2
-%
+# load dev-brew
 ```
 
 ## My recommendation for Developers

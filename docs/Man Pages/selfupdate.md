@@ -3,7 +3,7 @@
 USAGE
 
 	clamity selfupdate help
-	clamity selfupdate [-y] [update] [--no-pkg-mgr]
+	clamity selfupdate [-y] [update] [ [--no-pkg-mgr] [--no-backup] [--no-python] | [--me-only] ]
 	clamity selfupdate [-y] cron { installed | available | install <cron-template> | remove <cron-template> }
 
 ABSTRACT
@@ -17,8 +17,11 @@ SELFUPDATE COMMANDS
 
 COMMAND OPTIONS
 	
-	--no-pkg-mgr
-		Update the clamity installation without including the package manager.
+	--no-pkg-mgr --no-backup --no-python
+		Update the clamity installation without performing the specified task(s).
+
+	--me-only
+		Only update the clamity software, do not perform any other tasks.
 
 DESCRIPTION
 

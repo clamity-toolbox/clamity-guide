@@ -12,7 +12,7 @@ Its primary tool is the `clamity CLI` which blends a custom user interface
 interface with documentation in context so my tiny pea-brain doesn't have to
 memorize the zillions of ways things work and glue together.
 
-A browser front-ended service is in the planning stage.
+A browser front-ended service is in the ~~planning~~ dreaming stage.
 
 ## The Clamity CLI
 
@@ -134,6 +134,5 @@ choices follow.
 ### Contributions
 
 Contributions are welcome with the expectation that you're consistent with the
-practices and structure of the toolkit (and please be using it before you
-request a change to improve it). Create your fork and submit PR's as desired.
-And thanks for helping out!
+practices and structure of the toolkit. Create your fork and submit PR's as
+desired. And thanks for helping out!
